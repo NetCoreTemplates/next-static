@@ -18,11 +18,7 @@ export default function Nav() {
     const pathname = usePathname()
 
     const items:NavItem[] = [
-        { href: '/shadcn-ui', name: 'shadcn/ui'},
-        { href: '/posts', name: 'Blog'},
-        { href: '/todomvc', name: 'Todos'},
         { href: '/bookings-auto', name: 'Bookings'},
-        { href: '/features', name: 'Features'},
     ]
 
     const { user, hasRole, signOut } = appAuth()
@@ -54,14 +50,10 @@ export default function Nav() {
                     })}
                         {user
                             ? (<>
-                                {hasRole('Admin')
-                                    ? <li className="relative flex flex-wrap just-fu-start m-0">
-                                        <Link href="/admin" className={navClass('/admin')}>Admin</Link>
-                                    </li> : null}
                                 <li>
                                     <div className="mx-3 relative">
                                         <div>
-                                            <Link href="/profile"
+                                            <a href="/Identity/Account/Manage"
                                                   className="max-w-xs rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 lg:p-2 lg:rounded-md lg:hover:bg-gray-50 dark:lg:hover:bg-gray-900 dark:ring-offset-black"
                                                   id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                                                 <img className="h-8 w-8 rounded-full" src={user.profileUrl} alt=""/>
@@ -70,7 +62,7 @@ export default function Nav() {
                                                 <span className="sr-only">Open user menu for </span>
                                                     {user.userName}
                                                 </span>
-                                            </Link>
+                                            </a>
                                         </div>
                                     </div>
                                 </li>

@@ -14,8 +14,6 @@ const DEPLOY_API = process.env.KAMAL_DEPLOY_HOST
 // Now use it for API_URL
 const API_URL = isProd ? DEPLOY_API : (buildLocal ? '' : target)
 
-console.log('next.config.mjs', process.env.NODE_ENV, buildLocal, API_URL, process.env.KAMAL_DEPLOY_HOST)
-
 /**
  * @type {import('next').NextConfig}
  **/
@@ -23,11 +21,16 @@ const nextConfig = {
     // Configure pageExtensions to include MDX files
     pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
 
-    // Enable static export (replaces next export command)
-    output: isProd ? 'export' : undefined,
-
     // Change output directory from 'out' to 'dist'
     distDir: 'dist',
+
+    // Images are served unoptimized; adjust if you later add an image optimizer/CDN
+    images: {
+        unoptimized: true
+    },
+
+    // Keep clean URLs without trailing slashes
+    trailingSlash: false,
 
     env: {
         apiBaseUrl: API_URL

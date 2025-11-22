@@ -1,9 +1,7 @@
-import Container from "./container"
-
 const Footer = () => {
   return (
     <footer className="bg-accent-1 dark:bg-gray-800 border-t border-accent-2 dark:border-gray-700">
-      <Container>
+      <div className="max-w-7xl mx-auto px-5">
         <div className="py-28 flex flex-col lg:flex-row items-center">
           <h3 className="text-4xl lg:text-6xl font-bold tracking-tighter leading-tight text-center lg:text-left mb-10 lg:mb-0 lg:pr-4 lg:w-1/2 text-gray-900 dark:text-gray-100">
             A ServiceStack Project
@@ -16,14 +14,14 @@ const Footer = () => {
               Read Documentation
             </a>
             <a
-              href={`https://github.com/NetCoreTemplates/nextjs`}
+              href={`https://github.com/NetCoreTemplates/next-static`}
               className="mx-3 font-bold hover:underline text-gray-900 dark:text-gray-100"
             >
               View on GitHub
             </a>
           </div>
         </div>
-      </Container>
+      </div>
     </footer>
   )
 }

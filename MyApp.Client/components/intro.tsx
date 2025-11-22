@@ -1,19 +1,28 @@
 'use client'
 
-import { useState } from "react"
-import { TextInput } from "@servicestack/react"
-import { swrClient } from "@/lib/gateway.client"
-import { Hello } from "@/lib/dtos"
+import { useState, useEffect } from "react"
+import { TextInput, useClient } from "@servicestack/react"
+import { ApiResult } from "@servicestack/client"
 import { CMS_NAME } from "@/lib/constants"
+import { Hello, HelloResponse } from "@/lib/dtos"
 
 const HelloApi = ({ name }:any) => {
-  const { data, error } = swrClient.get(() => new Hello({ name }))
-  if (error) return <div className="ml-2 text-red-500 dark:text-red-400">{error.message}</div>
-  return <div className="ml-3 mt-2 text-gray-900 dark:text-gray-100">{data ? data.result : 'loading...'}</div>
+  const client = useClient()
+  const [api, setApi] = useState<ApiResult<HelloResponse>>(new ApiResult())
+
+  useEffect(() => {
+    (async () => {
+      setApi(new ApiResult())
+      setApi(await client.api(new Hello({ name })))
+    })()
+  }, [name])
+
+  return api.error
+    ? <div className="ml-2 text-red-500 dark:text-red-400">{api.error.message}</div>
+    : <div className="ml-3 mt-2 text-gray-900 dark:text-gray-100">{api.response?.result ?? 'loading...'}</div>
 }
 
 const Intro = () => {
-
   const [inputValue, setInputValue] = useState<string>("Next.js");
     return (
     <section className="flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12">

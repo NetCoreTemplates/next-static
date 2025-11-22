@@ -1,6 +1,4 @@
 import "../styles/index.css"
-import "../styles/main.css"
-import "../styles/prism-dark-blue.css"
 import type { Metadata } from 'next'
 import Providers from './providers'
 

@@ -46,8 +46,7 @@ const ShellCommand: FC<ShellCommandProps> = ({ className, children }) => {
             "group relative overflow-hidden rounded-lg border border-slate-200 dark:border-slate-700",
             "bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800",
             "shadow-sm hover:shadow-md transition-all duration-200",
-            className
-        )}
+            className)}
             onClick={copy}
         >
             {/* Background pattern */}
@@ -56,9 +55,7 @@ const ShellCommand: FC<ShellCommandProps> = ({ className, children }) => {
 
             <div className="relative flex items-center justify-between px-4 py-3">
                 {/* Left side - Terminal icon and command */}
-                <div
-                    className="flex items-center gap-3 flex-1 min-w-0 cursor-pointer"
-                >
+                <div className="flex items-center gap-3 flex-1 min-w-0 cursor-pointer">
                     <Terminal className="w-4 h-4 text-slate-500 dark:text-slate-400 flex-shrink-0" />
                     <div className="flex items-center gap-2 min-w-0 flex-1">
                         <code ref={commandRef} className="text-sm font-mono text-slate-900 dark:text-slate-100 truncate">

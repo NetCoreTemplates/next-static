@@ -2,8 +2,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "node server.js",
-    "dtos": "cd lib && npx get-dtos ts",
+    "dev": "next dev",
+    "dtos": "npx get-dtos ts",
     "build": "next build",
     "build:local": "cross-env NODE_ENV=development MODE=local next build",
     "publish": "npm run build && dotnet publish ../MyApp/MyApp.csproj -c Release",
@@ -15,17 +15,9 @@
     "postinstall": "node ./postinstall.mjs"
   },
   "dependencies": {
-    "@mdx-js/loader": "^3.1.1",
-    "@mdx-js/react": "^3.1.1",
-    "@next/mdx": "^16.0.1",
-    "@radix-ui/react-accordion": "^1.2.12",
-    "@radix-ui/react-slot": "^1.2.4",
-    "@radix-ui/react-tabs": "^1.1.13",
     "@servicestack/client": "^2.1.1",
     "@servicestack/react": "^2.0.15",
-    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "date-fns": "^4.1.0",
     "gray-matter": "4.0.3",
     "http-proxy-middleware": "^3.0.5",
     "lucide-react": "^0.553.0",

@@ -8,7 +8,7 @@ NEXT_PORT="${NEXT_PORT:-3000}"
 if [[ "$*" == *"--AppTasks"* ]]; then
   echo "Running AppTask with args: $*"
   ASPNETCORE_CONTENTROOT="/app/api" ASPNETCORE_URLS="${ASPNETCORE_URLS}" \
-    dotnet /app/api/TechStacks.dll "$@"
+    dotnet /app/api/MyApp.dll "$@"
   exit $?
 fi
 
@@ -16,7 +16,7 @@ echo "Starting ASP.NET Core on ${ASPNETCORE_URLS}..."
 DOTNET_ENV_VARS=("ASPNETCORE_URLS=${ASPNETCORE_URLS}")
 
 # Start ASP.NET Core application with correct content root so appsettings.json is loaded
-ASPNETCORE_CONTENTROOT="/app/api" ASPNETCORE_URLS="${ASPNETCORE_URLS}" dotnet /app/api/TechStacks.dll &
+ASPNETCORE_CONTENTROOT="/app/api" ASPNETCORE_URLS="${ASPNETCORE_URLS}" dotnet /app/api/MyApp.dll &
 DOTNET_PID=$!
 
 echo "Starting Next.js on port ${NEXT_PORT}..."

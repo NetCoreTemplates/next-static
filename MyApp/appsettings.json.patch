@@ -1,4 +1,0 @@
-[
-     { "op":"add", "path":"/BaseUrl",             "value":"https://techstacks.io" },
-     { "op":"add", "path":"/Admins",               "value": ["demis.bellot@gmail.com","team@servicestack.net"] },
-]

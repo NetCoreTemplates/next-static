@@ -12,7 +12,7 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
-    "postinstall": "node ./postinstall.mjs"
+    "postinstall": "test -f ./postinstall.mjs && node ./postinstall.mjs || true"
   },
   "dependencies": {
     "@servicestack/client": "^2.1.13",

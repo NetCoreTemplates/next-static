@@ -47,6 +47,7 @@
     <ItemGroup>
       <CopyDist Include="../MyApp.Client/dist/**/*.*" />
     </ItemGroup>
+    <Exec Command="npm run ui:build" WorkingDirectory="." />
     <Copy SourceFiles="@(CopyDist)" DestinationFiles="@(CopyDist->'$(PublishDir)wwwroot\%(RecursiveDir)%(Filename)%(Extension)')" />
   </Target>
 

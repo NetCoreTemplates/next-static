@@ -47,8 +47,7 @@
     <ItemGroup>
       <CopyDist Include="../MyApp.Client/dist/**/*.*" />
     </ItemGroup>
-    <Copy SourceFiles="@(CopyDist)"
-      DestinationFiles="@(CopyDist->'$(PublishDir)wwwroot\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(CopyDist)" DestinationFiles="@(CopyDist->'$(PublishDir)wwwroot\%(RecursiveDir)%(Filename)%(Extension)')" />
   </Target>
 
 </Project>

@@ -5,14 +5,13 @@
     "dev": "next dev",
     "dtos": "npx get-dtos ts",
     "build": "next build",
-    "build:local": "cross-env NODE_ENV=development MODE=local next build",
     "publish": "npm run build && dotnet publish ../MyApp/MyApp.csproj -c Release",
     "start": "next start",
     "typecheck": "tsc",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
-    "postinstall": "test -f ./postinstall.mjs && node ./postinstall.mjs || true"
+    "postinstall": "node ./postinstall.mjs"
   },
   "dependencies": {
     "@servicestack/client": "^2.1.13",

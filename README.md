@@ -53,6 +53,9 @@ dotnet watch
 - **Vitest** - Modern testing framework
 - **ServiceStack React Components** - Pre-built UI components
 
+### .NET Frontend (Integrated + Optional)
+- **Razor Pages** - For Identity UI (`/Identity` routes)
+
 ## Major Features
 
 ### 1. Authentication & Authorization

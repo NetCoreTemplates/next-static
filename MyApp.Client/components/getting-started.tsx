@@ -24,7 +24,7 @@ export default ({ template }: Props) => {
         }
     }
 
-    return (<div className="flex flex-col w-96">
+    return (<div className="flex flex-col max-w-3xl">
         <h4 className="py-6 text-center text-xl">Create New Project</h4>
 
         <input type="text" onChange={handleChange} defaultValue={defaultValue} autoComplete="off" spellCheck="false" onKeyDown={validateSafeName}
@@ -53,7 +53,7 @@ export default ({ template }: Props) => {
 
         <ShellCommand className="mb-2">npx create-net {template} {project}</ShellCommand>
 
-        <h4 className="py-6 text-center text-xl">Run .NET Project</h4>
+        <h4 className="py-6 text-center text-xl">Run .NET and Next.js</h4>
         <ShellCommand className="mb-2">dotnet watch</ShellCommand>
     </div>)
 }

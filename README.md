@@ -1,4 +1,4 @@
-# .NET 10 Next.js Static Export ASP.NET Identity Auth Template
+# .NET 10 Next.js Static Export Identity Auth Template
 
 ![](https://github.com/ServiceStack/docs.servicestack.net/blob/main/MyApp/wwwroot/img/pages/react/next-static.webp)
 

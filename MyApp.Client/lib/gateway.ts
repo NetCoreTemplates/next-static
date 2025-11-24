@@ -17,7 +17,8 @@ const getBaseUrl = () => {
   return '/';
 };
 
-export const client = new JsonServiceClient(getBaseUrl());
+export const BaseUrl = getBaseUrl()
+export const client = new JsonServiceClient(BaseUrl);
 
 // Load Metadata & Auth State on Startup
 // This needs to be called on client side only

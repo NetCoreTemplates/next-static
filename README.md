@@ -99,29 +99,36 @@ dotnet watch
 ## Project Structure
 
 ```
-MyApp/                      # Main ASP.NET Core host
-├── Configure.*.cs          # Modular startup configuration
-├── Program.cs              # Application entry point
-├── Proxy.cs                # Next.js dev server proxy utilities
-└── wwwroot/                # Static files (production)
+MyApp/                       # Main ASP.NET Core host
+├── Configure.*.cs           # Modular startup configuration
+├── Program.cs               # Application entry point
+└── wwwroot/                 # Static files (production)
 
-MyApp.Client/              # Next.js frontend application
-├── app/                   # Next.js App Router pages
-├── components/            # React components
-├── lib/                   # Utilities and helpers
-├── public/                # Static assets
-└── dist/                  # Build output (production)
+MyApp.Client/                # Next.js frontend application
+├── app/                     # Next.js App Router pages
+├── components/              # React components
+├── lib/                     # Utilities and helpers
+├── public/                  # Static assets
+└── dist/                    # Build output (production)
 
-MyApp.ServiceInterface/    # Service implementations
-├── MyServices.cs          # Example services
-└── Data/                  # EF Core DbContext
+MyApp.ServiceInterface/      # Service implementations
+├── MyServices.cs            # Example services
+└── Data/                    # EF Core DbContext
 
-MyApp.ServiceModel/        # DTOs and service contracts
-├── Bookings.cs            # AutoQuery CRUD example
-└── Hello.cs               # Example service contract
+MyApp.ServiceModel/          # DTOs and service contracts
+├── Bookings.cs              # AutoQuery CRUD example
+└── Hello.cs                 # Example service contract
 
-MyApp.Tests/              # Integration and unit tests
-config/                   # Kamal deployment configuration
+MyApp.Tests/                 # Integration and unit tests
+
+config/                      # Deployment configuration
+└── deploy.yml               # Kamal deployment settings
+
+.github/                     # GitHub Actions workflows
+└── workflows/
+    ├── build.yml            # CI build and test
+    ├── build-container.yml  # Container image build
+    └── release.yml          # Production deployment with Kamal
 ```
 
 ## Development Workflow

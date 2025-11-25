@@ -27,10 +27,10 @@ const slides: Slide[] = [
     },
     {
         title: 'AI Chat',
-        summary: 'Integrated and easy to use ChatGPT-like UI for your users',
+        summary: 'Simple and flexible AI integrations with ChatGPT-like UI with Admin Analytics UI',
         image: 'https://docs.servicestack.net/img/pages/admin-ui/carousel/ai-chat.webp',
         url: 'https://docs.servicestack.net/ai-chat-api',
-        path: '/chat',
+        path: '/admin-ui/chat',
     },
     {
         title: 'Admin UI Dashboard',
@@ -333,8 +333,8 @@ const AutoUis: FC<{ className?: string }> = ({ className }) => {
 
       {/* Subtext */}
       <p className="max-w-3xl mx-auto mb-12 text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
-        Manage your ServiceStack app and instantly explore, query, and call its APIs using 
-        built-in Auto UIs automatically generated from your app's typed C# DTOs.
+        Manage your ServiceStack App, instantly explore, and query your APIs using 
+        the built-in Auto UIs that's automatically generated from your App's typed C# DTOs.
       </p>
     </div>
       

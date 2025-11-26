@@ -34,17 +34,10 @@ dotnet watch
 
 **Production Mode:**
 - Next.js app is statically exported to `/dist`
-- Static files served directly from ASP.NET Core's wwwroot
+- Static files served directly from ASP.NET Core's `/wwwroot`
 - No separate Node.js server required in production
 
 ## Core Technologies
-
-### Backend (.NET 10.0)
-- **ServiceStack 10.x** - High-performance web services framework
-- **ASP.NET Core Identity** - Complete authentication & authorization system
-- **Entity Framework Core** - For Identity data management
-- **OrmLite** - ServiceStack's fast, lightweight Typed ORM for application data
-- **SQLite** - Default database (easily upgradable to PostgreSQL/SQL Server/MySQL)
 
 ### Frontend (Next.js 16 + React 19)
 - **Next.js** with static export capability
@@ -54,7 +47,14 @@ dotnet watch
 - **ServiceStack React Components** - Pre-built UI components
 
 ### .NET Frontend (Integrated + Optional)
-- **Razor Pages** - For Identity UI (`/Identity` routes)
+- **Razor Pages** - For Identity Auth UI (`/Identity` routes)
+
+### Backend (.NET 10.0)
+- **ServiceStack 10.x** - High-performance web services framework
+- **ASP.NET Core Identity** - Complete authentication & authorization system
+- **Entity Framework Core** - For Identity data management
+- **OrmLite** - ServiceStack's fast, lightweight Typed ORM for application data
+- **SQLite** - Default database (easily upgradable to PostgreSQL/SQL Server/MySQL)
 
 ## Major Features
 

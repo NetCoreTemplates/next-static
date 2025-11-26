@@ -40,10 +40,10 @@ dotnet watch
 ## Core Technologies
 
 ### Backend (.NET 10.0)
-- **ServiceStack 8.x** - High-performance web services framework
+- **ServiceStack 10.x** - High-performance web services framework
 - **ASP.NET Core Identity** - Complete authentication & authorization system
 - **Entity Framework Core** - For Identity data management
-- **OrmLite** - ServiceStack's fast, lightweight ORM for application data
+- **OrmLite** - ServiceStack's fast, lightweight Typed ORM for application data
 - **SQLite** - Default database (easily upgradable to PostgreSQL/SQL Server/MySQL)
 
 ### Frontend (Next.js 16 + React 19)
@@ -66,9 +66,9 @@ dotnet watch
 - Razor Pages for Identity UI (`/Identity` routes)
 - Credentials-based authentication
 
-### 2. AutoQuery CRUD
+### [2. AutoQuery CRUD](#autoquery-crud-dev-workflow)
 - Declarative API development with minimal code
-- Complete CRUD operations (see Bookings example at `/bookings-auto`)
+- Complete Auth-protected CRUD operations (see Bookings example at `/bookings-auto`)
 - Automatic audit trails (created/modified/deleted tracking)
 - Built-in validation and authorization
 - Type-safe TypeScript DTOs auto-generated from C# models
@@ -134,26 +134,31 @@ config/                      # Deployment configuration
 ## Development Workflow
 
 ### 1. Start Development
+
 ```bash
 dotnet watch
 ```
+
 This automatically starts both .NET and Next.js dev servers.
 
 ### 2. Generate TypeScript DTOs
-After modifying C# service models, regenerate TypeScript types:
+
+After modifying C# service models, regenerate TypeScript dtos.ts in `MyApp` or `MyApp.Client` with:
+
 ```bash
-cd MyApp.Client
 npm run dtos
 ```
 
 ### 3. Database Migrations
 
 **OrmLite and Entity Framework:**
+
 ```bash
 npm run migrate
 ```
 
 **OrmLite (for application data):**
+
 Create migration classes in `MyApp/Migrations/` following the pattern in `Migration1000.cs`.
 
 ### 4. Testing
@@ -181,13 +186,17 @@ This builds the Next.js static export and publishes the .NET application.
 ## Deployment Options
 
 ### Docker
+
 Built-in container support with .NET SDK:
+
 ```bash
 dotnet publish -c Release
 ```
 
 ### Kamal
+
 Zero-downtime deployments with included configuration:
+
 ```bash
 kamal deploy
 ```
@@ -209,13 +218,65 @@ To switch from SQLite to PostgreSQL/SQL Server/MySQL:
 1. Install preferred RDBMS (ef-postgres, ef-mysql, ef-sqlserver), e.g:
 
 ```bash
-x mix ef-postgres
+npx add-in ef-postgres
 ```
 
 2. Install `db-identity` to use RDBMS `DatabaseJobsFeature` for background jobs and `DbRequestLogger` for Request Logs:
 
 ```bash
-x mix db-identity
+npx add-in db-identity
+```
+
+## AutoQuery CRUD Dev Workflow
+
+For Rapid Development simple [TypeScript Data Models](https://docs.servicestack.net/autoquery/okai-models) can be used to generate C# AutoQuery APIs and DB Migrations.
+
+### Cheat Sheet
+
+Create a new Table use `init <Table>`, e.g:
+
+```bash
+npx okai init Table
+```
+
+This will generate an empty `MyApp.ServiceModel/<Table>.d.ts` file along with stub AutoQuery APIs and DB Migration implementations. 
+
+#### Regenerate AutoQuery APIs and DB Migrations
+
+After modifying the TypeScript Data Model to include the desired fields, re-run the `okai` tool to re-generate the AutoQuery APIs and DB Migrations:
+
+```bash
+npx okai Table.d.ts
+```
+
+> Command can be run anywhere within your Solution
+
+After you're happy with your Data Model you can run DB Migrations to run the DB Migration and create your RDBMS Table:
+
+```bash
+npm run migrate
+```
+
+#### Making changes after first migration
+
+If you want to make further changes to your Data Model, you can re-run the `okai` tool to update the AutoQuery APIs and DB Migrations, then run the `rerun:last` npm script to drop and re-run the last migration:
+
+```bash
+npm run rerun:last
+```
+
+#### Removing a Data Model and all generated code
+
+If you changed your mind and want to get rid of the RDBMS Table you can revert the last migration:
+
+```bash
+npm run revert:last
+```
+
+Which will drop the table and then you can get rid of the AutoQuery APIs, DB Migrations and TypeScript Data model with:
+
+```bash
+npx okai rm Transaction.d.ts
 ```
 
 ## Ideal Use Cases
@@ -233,4 +294,3 @@ x mix db-identity
 - [Next.js Documentation](https://nextjs.org/docs)
 - [AutoQuery CRUD](https://docs.servicestack.net/autoquery-crud)
 - [ServiceStack Auth](https://docs.servicestack.net/authentication-and-authorization)
-

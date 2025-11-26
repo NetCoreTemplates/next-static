@@ -23,16 +23,20 @@ dotnet watch
 
 ## Architecture
 
-![](https://github.com/ServiceStack/docs.servicestack.net/blob/main/MyApp/wwwroot/img/pages/react/next-static-info.webp)
-
 ### Hybrid Development Approach
 
 **Development Mode:**
+
+![](https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/wwwroot/img/pages/react/info/next-static-dev.svg)
+
 - ASP.NET Core proxies requests to Next.js dev server (running on port 3000)
 - Hot Module Replacement (HMR) support for instant UI updates
 - WebSocket proxying for Next.js HMR functionality
 
 **Production Mode:**
+
+![](https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/wwwroot/img/pages/react/info/next-static-prod.svg)
+
 - Next.js app is statically exported to `/dist`
 - Static files served directly from ASP.NET Core's `/wwwroot`
 - No separate Node.js server required in production

@@ -113,7 +113,8 @@ MyApp.Client/                # Next.js frontend application
 ├── components/              # React components
 ├── lib/                     # Utilities and helpers
 ├── public/                  # Static assets
-└── dist/                    # Build output (production)
+├── dist/                    # Build output (production)
+└── styles/                  # Tailwind CSS styles
 
 MyApp.ServiceInterface/      # Service implementations
 ├── MyServices.cs            # Example services

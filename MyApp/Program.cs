@@ -47,7 +47,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
     app.UseMigrationsEndPoint();
-        
+
     app.MapNotFoundToNode(nodeProxy);
 }
 else
@@ -62,7 +62,6 @@ app.UseStaticFiles();
 app.MapCleanUrls();
 
 app.UseHttpsRedirection();
-app.UseWebSockets();
 app.UseAuthorization();
 app.MapRazorPages();
 
@@ -73,6 +72,7 @@ app.UseServiceStack(new AppHost(), options => {
 // Proxy development HMR WebSocket and fallback routes to the Next server
 if (app.Environment.IsDevelopment())
 {
+    app.UseWebSockets();
     app.MapNextHmr(nodeProxy);
 
     // Start the Next.js dev server if the Next.js lockfile does not exist

@@ -35,8 +35,6 @@ function SignInContent() {
 
     const onSubmit = async (e: SyntheticEvent<HTMLFormElement>) => {
         e.preventDefault()
-
-        const {userName, password} = serializeToObject(e.currentTarget);
         const api = await client.api(new Authenticate({ provider:'credentials', userName, password }))
         if (api.succeeded)
             await revalidate()

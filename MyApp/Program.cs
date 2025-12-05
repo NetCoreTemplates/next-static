@@ -72,19 +72,14 @@ app.UseServiceStack(new AppHost(), options => {
 // Proxy development HMR WebSocket and fallback routes to the Next server
 if (app.Environment.IsDevelopment())
 {
-    // Start the Next.js dev server if the Next.js lockfile does not exist
-    app.RunNodeProcess(nodeProxy,
-        lockFile: "../MyApp.Client/dist/lock",
-        workingDirectory: "../MyApp.Client");
-
+    app.RunNodeProcess(nodeProxy, "../MyApp.Client"); // Start Node if not running
     app.UseWebSockets();
-    app.MapNextHmr(nodeProxy);
-    app.MapFallbackToNode(nodeProxy);
+    app.MapNextHmr(nodeProxy); // Proxy HMR WebSocket requests 
+    app.MapFallbackToNode(nodeProxy); // Fallback to Node dev server in development
 }
 else
 {
-    // Map fallback to index.html in production (MyApp.Client/dist > wwwroot)
-    app.MapFallbackToFile("index.html");
+    app.MapFallbackToFile("index.html"); // Fallback to index.html in production (MyApp.Client/dist > wwwroot)
 }
 
 app.Run();

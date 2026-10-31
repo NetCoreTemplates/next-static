@@ -13,13 +13,15 @@
     "fmt": "vp fmt",
     "test": "vp test",
     "test:run": "vp test run",
-    "test:ui": "vp test --ui"
+    "test:ui": "vp test --ui",
+    "outdated": "vp outdated",
+    "upgrade": "npx npm-check-updates@latest -u --reject vite,vite-plus,@vitest/ui && npm install"
   },
   "dependencies": {
     "@servicestack/client": "^2.1.13",
     "@servicestack/react": "^2.0.19",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.577.0",
+    "lucide-react": "^1.66.0",
     "next": "^16.4.3",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
